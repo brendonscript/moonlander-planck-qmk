@@ -3,8 +3,13 @@
   See config.h options at https://docs.qmk.fm/#/config_options?id=the-configh-file
 */
 
+#undef TAPPING_TERM
+#define TAPPING_TERM 175
+
+#define PERMISSIVE_HOLD
+
 #define USB_SUSPEND_WAKEUP_DELAY 0
-#define SERIAL_NUMBER "zerEm/wOnpAV"
+#define SERIAL_NUMBER "zerEm/Ee4dVZ"
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 5
 #define HCS(report) host_consumer_send(record->event.pressed ? report : 0); return false
