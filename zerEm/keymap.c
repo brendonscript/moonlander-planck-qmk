@@ -4,6 +4,12 @@
 #define MOON_LED_LEVEL LED_LEVEL
 #define ML_SAFE_RANGE SAFE_RANGE
 
+
+// Custom Headers
+#include "features/achordion.h"
+
+
+
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   MAC_MISSION_CONTROL,
@@ -25,7 +31,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MEH_T(KC_TAB),  KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_LBRC,                                        KC_RBRC,        KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
     ALL_T(KC_ESCAPE),MT(MOD_LALT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),KC_G,           TD(DANCE_0),                                                                    TD(DANCE_2),    KC_H,           MT(MOD_LSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_LCTL, KC_L),MT(MOD_LALT, KC_SCLN),KC_QUOTE,       
     KC_LEFT_SHIFT,  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RIGHT_SHIFT, 
-    KC_LEFT_CTRL,   KC_NO,          KC_NO,          KC_LEFT_ALT,    KC_LEFT_GUI,    KC_HYPR,                                                                                                        KC_MEH,         KC_RIGHT_ALT,   KC_RIGHT_GUI,   KC_LBRC,        KC_RBRC,        KC_RIGHT_CTRL,  
+    KC_LEFT_CTRL,   QK_AREP,          QK_REP,          KC_LEFT_ALT,    KC_LEFT_GUI,    KC_HYPR,                                                                                                        KC_MEH,         KC_RIGHT_ALT,   KC_RIGHT_GUI,   KC_LBRC,        KC_RBRC,        KC_RIGHT_CTRL,  
     MT(MOD_LSFT, KC_SPACE),LT(7,KC_TAB),   TD(DANCE_1),                    TD(DANCE_3),    LT(5,KC_ENTER), MT(MOD_LSFT, KC_BSPC)
   ),
   [1] = LAYOUT_moonlander(
@@ -207,6 +213,8 @@ bool rgb_matrix_indicators_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_achordion(keycode, record)) { return false; }
+
   switch (keycode) {
     case MAC_MISSION_CONTROL:
       HCS(0x29F);
@@ -478,3 +486,15 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_4] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_4, dance_4_finished, dance_4_reset),
         [DANCE_5] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_5, dance_5_finished, dance_5_reset),
 };
+
+
+
+// Custom Config
+
+void housekeeping_task_user(void) {
+  achordion_task();
+}
+
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  return 800;
+}
