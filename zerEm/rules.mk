@@ -10,5 +10,9 @@ SPACE_CADET_ENABLE = no
 CAPS_WORD_ENABLE = yes
 COMBO_ENABLE = yes
 DYNAMIC_TAPPING_TERM_ENABLE = yes
+
+
+
+# Custom
 REPEAT_KEY_ENABLE = yes
 SRC += features/achordion
