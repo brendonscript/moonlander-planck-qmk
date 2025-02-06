@@ -19,3 +19,9 @@
 
 #define RGB_MATRIX_STARTUP_SPD 60
 
+
+
+
+// Custom
+
+#define ACHORDION_STREAK

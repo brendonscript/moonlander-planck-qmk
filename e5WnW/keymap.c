@@ -4,6 +4,13 @@
 #endif
 #include "eeprom.h"
 
+
+
+//Custom
+#include "features/achordion.h"
+
+
+
 enum planck_keycodes {
   RGB_SLD = EZ_SAFE_RANGE,
 };
@@ -54,6 +61,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+  if (!process_achordion(keycode, record)) { return false; }
+
   switch (keycode) {
 
     case RGB_SLD:
@@ -143,4 +152,14 @@ uint8_t layer_state_set_user(uint8_t state) {
 }
 
 
+
+// Custom
+
+void housekeeping_task_user(void) {
+  achordion_task();
+}
+
+uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
+  return 800;
+}
 
