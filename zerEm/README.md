@@ -9,3 +9,4 @@ https://getreuer.info/posts/keyboards/achordion/index.html
 - [ ] Configure certain keys to bypass accordion like `ctrl+;` e.g. `l+;`
 - [ ] Fix windows layer
 - [ ] Figure out how to get space and backspace back onto thumb cluster
+- [ ] Automate github actions building this
