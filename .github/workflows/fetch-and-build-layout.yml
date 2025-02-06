@@ -4,21 +4,18 @@ on:
   workflow_dispatch:
     inputs:
       layout_id:
-        description: "Layout id available in URL https://configure.zsa.io/voyager/layouts/[ID_IS_HERE]/latest"
+        description: "zerEm (Moonlander) or e5WnW (Planck)"
         required: true
+        type: choice
+        options:
+          - "zerEm"
+          - "e5WnW"
         default: "zerEm"
       layout_geometry:
         description: "Keyboard type"
         type: choice
         options:
-          - voyager
           - moonlander
-          - ergodox_ez
-          - ergodox_ez/stm32/glow
-          - ergodox_ez/stm32/shine
-          - ergodox_ez/m32u4/glow
-          - ergodox_ez/m32u4/shine
-          - planck_ez
           - planck_ez/glow
         default: moonlander
 
