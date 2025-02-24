@@ -10,6 +10,7 @@ on:
         options:
           - "zerEm"
           - "e5WnW"
+          - "p6zbE"
         default: "zerEm"
       layout_geometry:
         description: "Keyboard type"
