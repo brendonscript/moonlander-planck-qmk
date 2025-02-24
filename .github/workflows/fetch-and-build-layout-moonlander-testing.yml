@@ -1,4 +1,4 @@
-name: Fetch and build moonlander layout
+name: Fetch and build moonlander testing layout
 
 on:
   workflow_dispatch:
