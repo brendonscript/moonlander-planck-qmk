@@ -11,4 +11,3 @@ CAPS_WORD_ENABLE = yes
 
 # Custom
 REPEAT_KEY_ENABLE = yes
-SRC += features/achordion.c

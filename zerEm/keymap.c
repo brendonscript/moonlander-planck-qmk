@@ -6,7 +6,6 @@
 
 
 // Custom Headers
-#include "features/achordion.h"
 
 
 
@@ -211,8 +210,6 @@ bool rgb_matrix_indicators_user(void) {
 }
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
-  if (!process_achordion(keycode, record)) { return false; }
-
   switch (keycode) {
     case MAC_MISSION_CONTROL:
       HCS(0x29F);
@@ -413,10 +410,4 @@ tap_dance_action_t tap_dance_actions[] = {
 
 // Custom Config
 
-void housekeeping_task_user(void) {
-  achordion_task();
-}
 
-uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  return 800;
-}

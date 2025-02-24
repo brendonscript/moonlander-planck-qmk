@@ -24,4 +24,3 @@
 
 // Custom
 
-#define ACHORDION_STREAK

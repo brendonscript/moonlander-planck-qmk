@@ -11,3 +11,4 @@ https://getreuer.info/posts/keyboards/achordion/index.html
 - [ ] Figure out how to get space and backspace back onto thumb cluster
 - [ ] Automate github actions building this
 - [ ] Setup Planck
+- [ ] Chordal hold https://github.com/qmk/qmk_firmware/pull/24560

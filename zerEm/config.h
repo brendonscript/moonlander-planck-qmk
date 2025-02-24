@@ -20,4 +20,4 @@
 
 // Custom
 
-#define ACHORDION_STREAK
+#define CHORDAL_HOLD
