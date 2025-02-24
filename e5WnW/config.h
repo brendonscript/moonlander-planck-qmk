@@ -24,3 +24,4 @@
 
 // Custom
 
+#define CHORDAL_HOLD
