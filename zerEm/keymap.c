@@ -410,4 +410,13 @@ tap_dance_action_t tap_dance_actions[] = {
 
 // Custom Config
 
-
+// 5th row 6+7 column are top thumb buttons
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+    LAYOUT_moonlander(
+    'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L', 'L',               'R', 'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L',         '*','*',        'R', 'R', 'R', 'R', 'R', 
+                        '*', '*', '*',     '*', '*', '*'
+    );

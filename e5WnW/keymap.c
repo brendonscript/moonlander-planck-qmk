@@ -152,3 +152,13 @@ uint8_t layer_state_set_user(uint8_t state) {
 
 // Custom
 
+// 5th row 6+7 column are top thumb buttons
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+    LAYOUT_moonlander(
+    'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L', 'L',               'R', 'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L',         '*','*',        'R', 'R', 'R', 'R', 'R', 
+                        '*', '*', '*',     '*', '*', '*'
+    );
