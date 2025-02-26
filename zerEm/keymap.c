@@ -417,8 +417,8 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
     'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
     'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
     'L', 'L', 'L', 'L', 'L', 'L',               'R', 'R', 'R', 'R', 'R', 'R', 
-    'L', 'L', 'L', 'L', 'L',         '*','*',        'R', 'R', 'R', 'R', 'R', 
-    '*', '*', '*',     '*', '*', '*'
+    'L', 'L', 'L', 'L', 'L',         'L','R',        'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L',     'R', 'R', 'R'
   );
 
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
@@ -430,6 +430,23 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
         return true;
       }
       break;
+    case MT(MOD_LGUI, KC_D):
+      if (other_keycode == KC_A) {
+        return true;
+      }
+      break;
+
+    case MT(MOD_LCTL, KC_S):
+      if (other_keycode == KC_D) {
+        return true;
+      }
+      break;
+    case MT(MOD_LCTL, KC_L):
+      if (other_keycode == KC_U) {
+        return true;
+      }
+      break;
+
   }
   // Otherwise defer to the opposite hands rule.
   return get_chordal_hold_default(tap_hold_record, other_record);

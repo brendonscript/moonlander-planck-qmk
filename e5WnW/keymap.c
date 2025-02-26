@@ -233,12 +233,30 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
     'L','L','L','L','L','*','*','R','R','R','R','R'        
   );
 
+
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
                       uint16_t other_keycode, keyrecord_t* other_record) {
   // Exceptionally allow some one-handed chords for hotkeys.
   switch (tap_hold_keycode) {
     case MT(MOD_LSFT, KC_J):
       if (other_keycode == KC_SCLN) {
+        return true;
+      }
+      break;
+    case MT(MOD_LGUI, KC_D):
+      if (other_keycode == KC_A) {
+        return true;
+      }
+      break;
+
+    case MT(MOD_LCTL, KC_S):
+      if (other_keycode == KC_D) {
+        return true;
+      }
+      break;
+
+    case MT(MOD_LCTL, KC_L):
+      if (other_keycode == KC_U) {
         return true;
       }
       break;

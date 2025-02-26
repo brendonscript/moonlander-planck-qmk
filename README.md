@@ -13,7 +13,7 @@ https://getreuer.info/posts/keyboards/achordion/index.html
 
 # Todos
 
-- [ ] Configure certain keys to bypass accordion like `ctrl+;` e.g. `l+;`
+- [ ] Configure certain keys to bypass accordion like `cmd-w`
 - [ ] Fix windows layer
 - [ ] Figure out how to get space and backspace back onto thumb cluster
 - [x] Automate github actions building this
