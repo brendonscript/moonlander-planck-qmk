@@ -31,6 +31,3 @@
 // Custom
 
 #define CHORDAL_HOLD
-#undef TAPPING_TERM
-#define TAPPING_TERM 215
-#define PERMISSIVE_HOLD
