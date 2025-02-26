@@ -23,10 +23,10 @@ enum tap_dance_codes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
     KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_EQUAL,                                       TG(4),          KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       
-    MEH_T(KC_TAB),  KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           LGUI(LSFT(KC_5)),                                LGUI(LSFT(KC_4)),KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
+    MEH_T(KC_TAB),  KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           LGUI(LSFT(KC_4)),                                LGUI(LSFT(KC_5)),KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
     ALL_T(KC_ESCAPE),MT(MOD_LALT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),KC_G,           QK_REP,                                                                          QK_AREP,          KC_H,           MT(MOD_LSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_LCTL, KC_L),MT(MOD_LALT, KC_SCLN),KC_QUOTE,       
     KC_LEFT_SHIFT,  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RIGHT_SHIFT, 
-    CW_TOGG,        KC_TRANSPARENT, KC_LEFT_CTRL,   OSM(MOD_LALT),  MT(MOD_LGUI, KC_SPACE),OSM(MOD_LALT),                                                                                                  LCTL(KC_A),     MT(MOD_RALT, KC_BSPC),MT(MOD_RGUI, KC_DELETE),TD(DANCE_0),    TD(DANCE_1),    LGUI(KC_SPACE), 
+    KC_LEFT_CTRL,   KC_TRANSPARENT, CW_TOGG,        KC_LEFT_ALT,    MT(MOD_LGUI, KC_SPACE),LALT(KC_A),                                                                                                     LCTL(KC_A),     MT(MOD_RALT, KC_BSPC),MT(MOD_RGUI, KC_DELETE),TD(DANCE_0),    TD(DANCE_1),    LGUI(KC_SPACE), 
     LT(2,KC_SPACE), LT(1,KC_BSPC),  ALL_T(KC_ESCAPE),                KC_MEH,         LT(3,KC_TAB),   MT(MOD_LSFT, KC_ENTER)
   ),
   [1] = LAYOUT_moonlander(
@@ -63,13 +63,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 };
 const uint16_t PROGMEM combo0[] = { MT(MOD_RALT, KC_BSPC), MT(MOD_LGUI, KC_SPACE), COMBO_END};
-const uint16_t PROGMEM combo1[] = { OSM(MOD_LALT), MT(MOD_RGUI, KC_DELETE), COMBO_END};
-const uint16_t PROGMEM combo2[] = { MT(MOD_RALT, KC_BSPC), OSM(MOD_LALT), COMBO_END};
+const uint16_t PROGMEM combo1[] = { MT(MOD_RGUI, KC_DELETE), KC_LEFT_ALT, COMBO_END};
+const uint16_t PROGMEM combo2[] = { MT(MOD_RALT, KC_BSPC), KC_LEFT_ALT, COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-    COMBO(combo0, TT(1)),
-    COMBO(combo1, TT(2)),
-    COMBO(combo2, TT(3)),
+    COMBO(combo0, OSL(1)),
+    COMBO(combo1, OSL(2)),
+    COMBO(combo2, OSL(3)),
 };
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t *record) {
     switch (keycode) {
@@ -92,7 +92,7 @@ void keyboard_post_init_user(void) {
 
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [0] = { {187,244,255}, {90,255,255}, {90,255,255}, {90,255,255}, {16,255,255}, {165,255,255}, {0,0,255}, {43,253,255}, {0,0,255}, {0,0,255}, {165,255,255}, {0,0,255}, {43,253,255}, {0,0,255}, {90,255,255}, {165,255,255}, {0,0,255}, {43,253,255}, {0,0,255}, {90,255,255}, {165,255,255}, {0,0,255}, {43,253,255}, {0,0,255}, {90,255,255}, {165,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {187,244,255}, {0,0,255}, {16,255,255}, {215,255,255}, {215,255,255}, {90,255,255}, {90,255,255}, {187,244,255}, {187,244,255}, {187,244,255}, {90,255,255}, {43,253,255}, {165,255,255}, {0,0,255}, {43,253,255}, {187,244,255}, {187,244,255}, {165,255,255}, {0,0,255}, {43,253,255}, {187,244,255}, {187,244,255}, {165,255,255}, {0,0,255}, {43,253,255}, {187,244,255}, {90,255,255}, {165,255,255}, {0,0,255}, {43,253,255}, {0,0,255}, {90,255,255}, {165,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {16,255,255}, {0,0,255}, {16,255,255}, {90,255,255}, {90,255,255}, {90,255,255}, {43,253,255} },
+    [0] = { {187,244,255}, {90,255,255}, {90,255,255}, {90,255,255}, {90,255,255}, {165,255,255}, {0,0,255}, {43,253,255}, {0,0,255}, {0,0,255}, {165,255,255}, {0,0,255}, {43,253,255}, {0,0,255}, {16,255,255}, {165,255,255}, {0,0,255}, {43,253,255}, {0,0,255}, {90,255,255}, {165,255,255}, {0,0,255}, {43,253,255}, {0,0,255}, {90,255,255}, {165,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {187,244,255}, {0,0,255}, {16,255,255}, {215,255,255}, {215,255,255}, {90,255,255}, {43,253,255}, {187,244,255}, {187,244,255}, {187,244,255}, {90,255,255}, {43,253,255}, {165,255,255}, {0,0,255}, {43,253,255}, {187,244,255}, {187,244,255}, {165,255,255}, {0,0,255}, {43,253,255}, {187,244,255}, {187,244,255}, {165,255,255}, {0,0,255}, {43,253,255}, {187,244,255}, {90,255,255}, {165,255,255}, {0,0,255}, {43,253,255}, {0,0,255}, {90,255,255}, {165,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {16,255,255}, {0,0,255}, {16,255,255}, {90,255,255}, {90,255,255}, {90,255,255}, {43,253,255} },
 
     [1] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {90,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {16,255,255}, {90,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {90,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {16,255,255}, {90,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {43,253,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,0}, {0,0,0}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,0}, {0,0,0}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,0}, {0,0,0}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0} },
 
@@ -282,8 +282,8 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
     'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
     'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
     'L', 'L', 'L', 'L', 'L', 'L',               'R', 'R', 'R', 'R', 'R', 'R', 
-    'L', 'L', 'L', 'L', 'L',         'L','R',        'R', 'R', 'R', 'R', 'R', 
-    'L', 'L', 'L',     'R', 'R', 'R'
+    'L', 'L', 'L', 'L', 'L',         '*','*',        'R', 'R', 'R', 'R', 'R', 
+    '*', '*', '*',     '*', '*', '*'
   );
 
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
