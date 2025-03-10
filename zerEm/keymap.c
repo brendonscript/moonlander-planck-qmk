@@ -337,23 +337,23 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
                       uint16_t other_keycode, keyrecord_t* other_record) {
   // Exceptionally allow some one-handed chords for hotkeys.
   switch (tap_hold_keycode) {
-    case MT(MOD_LSFT, KC_J):
+    case LSFT_T(KC_J):
       if (other_keycode == KC_SCLN) {
         return true;
       }
       break;
-    case MT(MOD_LGUI, KC_D):
+    case LGUI_T(KC_D):
       if (other_keycode == KC_A) {
         return true;
       }
       break;
 
-    case MT(MOD_LCTL, KC_S):
+    case LCTL_T(KC_S):
       if (other_keycode == KC_D) {
         return true;
       }
       break;
-    case MT(MOD_LCTL, KC_L):
+    case LCTL_T(KC_L):
       if (other_keycode == KC_U) {
         return true;
       }
