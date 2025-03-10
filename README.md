@@ -13,10 +13,4 @@ https://getreuer.info/posts/keyboards/achordion/index.html
 
 # Todos
 
-- [ ] Configure certain keys to bypass accordion like `cmd-w`
-- [ ] Lower tap term on thumb clusters
-- [ ] Fix windows layer
-- [ ] Figure out how to get space and backspace back onto thumb cluster
-- [x] Automate github actions building this
-- [x] Setup Planck
-- [x] Chordal hold https://github.com/qmk/qmk_firmware/pull/24560
+- [ ] Add mouse layer
