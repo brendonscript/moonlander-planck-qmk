@@ -373,9 +373,9 @@ void leader_start_user(void) {
 }
 
 void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_W)) {
-        // Enable Windows Layer
-        layer_on(1);
+    if (leader_sequence_one_key(KC_O)) {
+        // Toggle Windows Layer
+        layer_invert(1);
     } 
 }
 
