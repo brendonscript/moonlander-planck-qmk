@@ -1,0 +1,56 @@
+name: Auto Build Layout
+
+on:
+  push:
+    paths:
+      - "zerEm/**"
+      - "5qJbe/**"
+      - "e5WnW/**"
+
+jobs:
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      zerEm: ${{ steps.filter.outputs.zerEm }}
+      5qJbe: ${{ steps.filter.outputs.5qJbe }}
+      e5WnW: ${{ steps.filter.outputs.e5WnW }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Filter changes
+        uses: dorny/paths-filter@v2
+        id: filter
+        with:
+          filters: |
+            zerEm:
+              - 'zerEm/**'
+            5qJbe:
+              - '5qJbe/**'
+            e5WnW:
+              - 'e5WnW/**'
+
+  build-moonlander-zerEm:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.zerEm == 'true' }}
+    uses: ./.github/workflows/fetch-and-build-layout.yml
+    with:
+      layout_id: zerEm
+      layout_geometry: moonlander
+
+  build-moonlander-5qJbe:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.5qJbe == 'true' }}
+    uses: ./.github/workflows/fetch-and-build-layout.yml
+    with:
+      layout_id: 5qJbe
+      layout_geometry: moonlander
+
+  build-planck-e5WnW:
+    needs: detect-changes
+    if: ${{ needs.detect-changes.outputs.e5WnW == 'true' }}
+    uses: ./.github/workflows/fetch-and-build-layout.yml
+    with:
+      layout_id: e5WnW
+      layout_geometry: planck_ez/glow
