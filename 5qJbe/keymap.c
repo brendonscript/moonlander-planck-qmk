@@ -16,7 +16,9 @@ enum custom_keycodes {
   MAC_MISSION_CONTROL,
 };
 
-
+// F22 - QK_REP
+// F23 - QK_AREP
+// F24 - Leader TBD
 
 enum tap_dance_codes {
   DANCE_0,
@@ -25,10 +27,10 @@ enum tap_dance_codes {
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
     KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_EQUAL,                                       TG(7),          KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       
-    MEH_T(KC_TAB),  KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_F22,                                         KC_F23,         KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
+    MEH_T(KC_TAB),  KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           QK_REP,                                         QK_AREP,         KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
     ALL_T(KC_ESCAPE),MT(MOD_LALT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),KC_G,           TD(DANCE_0),                                                                    TD(DANCE_1),    KC_H,           MT(MOD_LSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_LCTL, KC_L),MT(MOD_LALT, KC_SCLN),KC_QUOTE,       
     KC_LEFT_SHIFT,  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RIGHT_SHIFT, 
-    CW_TOGG,        OSM(MOD_MEH),   OSM(MOD_HYPR),  KC_LEFT_CTRL,   KC_LEFT_GUI,    TG(6),                                                                                                          OSL(4),         KC_LEFT_ALT,    KC_F24,         LGUI(LSFT(KC_4)),LGUI(LSFT(KC_5)),LGUI(KC_SPACE), 
+    CW_TOGG,        OSM(MOD_MEH),   OSM(MOD_HYPR),  KC_LEFT_CTRL,   KC_LEFT_GUI,    TG(6),                                                                                                          OSL(4),         KC_LEFT_ALT,    KC_NO,         LGUI(LSFT(KC_4)),LGUI(LSFT(KC_5)),LGUI(KC_SPACE), 
     MT(MOD_LSFT, KC_SPACE),LT(1,KC_TAB),   LT(3,KC_ESCAPE),                MT(MOD_LALT, KC_DELETE),LT(2,KC_ENTER), MT(MOD_LSFT, KC_BSPC)
   ),
   [1] = LAYOUT_moonlander(
@@ -310,3 +312,71 @@ tap_dance_action_t tap_dance_actions[] = {
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
         [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
 };
+
+
+
+
+// Custom
+
+// 5th row 6+7 column are top thumb buttons
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+  LAYOUT_moonlander(
+    'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L', 'L', 'L',     'R', 'R', 'R', 'R', 'R', 'R', 'R', 
+    'L', 'L', 'L', 'L', 'L', 'L',               'R', 'R', 'R', 'R', 'R', 'R', 
+    '*', '*', '*', '*', '*',         '*','*',        '*', '*', '*', '*', '*', 
+    '*', '*', '*',     '*', '*', '*'
+  );
+
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+                      uint16_t other_keycode, keyrecord_t* other_record) {
+  // Exceptionally allow some one-handed chords for hotkeys.
+  switch (tap_hold_keycode) {
+    case LSFT_T(KC_J):
+      if (other_keycode == KC_SCLN) {
+        return true;
+      }
+      break;
+    case LGUI_T(KC_D):
+      if (other_keycode == KC_A) {
+        return true;
+      }
+      break;
+
+    case LCTL_T(KC_S):
+      if (other_keycode == KC_D) {
+        return true;
+      }
+      break;
+    case LCTL_T(KC_L):
+      if (other_keycode == KC_U) {
+        return true;
+      }
+      break;
+
+  }
+  // Otherwise defer to the opposite hands rule.
+  return get_chordal_hold_default(tap_hold_record, other_record);
+}
+
+// void leader_start_user(void) {
+//     // Do something when the leader key is pressed
+// }
+//
+// void leader_end_user(void) {
+//     if (leader_sequence_one_key(KC_F)) {
+//         // Leader, f => Types the below string
+//         SEND_STRING("QMK is awesome.");
+//     } else if (leader_sequence_two_keys(KC_D, KC_D)) {
+//         // Leader, d, d => Ctrl+A, Ctrl+C
+//         SEND_STRING(SS_LCTL("a") SS_LCTL("c"));
+//     } else if (leader_sequence_three_keys(KC_D, KC_D, KC_S)) {
+//         // Leader, d, d, s => Types the below string
+//         SEND_STRING("https://start.duckduckgo.com\n");
+//     } else if (leader_sequence_two_keys(KC_A, KC_S)) {
+//         // Leader, a, s => GUI+S
+//         tap_code16(LGUI(KC_S));
+//     }
+// }
+
