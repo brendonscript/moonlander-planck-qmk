@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       layout_id:
-        description: "zerEm (Moonlander) or p6zbE (Moonlander Testing) or e5WnW (Planck)"
+        description: "zerEm (Moonlander) or 5qJbe (Moonlander v3) or e5WnW (Planck)"
         required: true
         type: choice
         options:
           - "zerEm"
-          - "p6zbE"
+          - "5qJbe"
           - "e5WnW"
         default: "zerEm"
       layout_geometry:
