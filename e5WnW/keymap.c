@@ -7,6 +7,7 @@
 
 enum planck_keycodes {
   RGB_SLD = EZ_SAFE_RANGE,
+  MAC_MISSION_CONTROL,
 };
 
 
@@ -30,16 +31,16 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
-    KC_TRANSPARENT, KC_TRANSPARENT, CW_TOGG,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_HOME,        KC_PGDN,        KC_PAGE_UP,     KC_END,         KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, CW_TOGG,        KC_TRANSPARENT, MAC_MISSION_CONTROL,KC_TRANSPARENT, KC_HOME,        KC_PGDN,        KC_PAGE_UP,     KC_END,         LGUI(KC_SPACE), KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_LEFT_ALT,    KC_LEFT_CTRL,   KC_LEFT_GUI,    KC_LEFT_SHIFT,  KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_MAC_UNDO,    KC_MAC_CUT,     KC_MAC_COPY,    KC_MAC_PASTE,   KC_TRANSPARENT, LALT(KC_LEFT),  LALT(KC_DOWN),  LALT(KC_UP),    LALT(KC_RIGHT), KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_NO
   ),
 
   [_RAISE] = LAYOUT_planck_grid(
-    KC_TRANSPARENT, KC_DQUO,        KC_PLUS,        KC_LCBR,        KC_RCBR,        KC_TILD,        KC_ASTR,        KC_EXLM,        KC_AMPR,        KC_PIPE,        KC_SLASH,       KC_BSLS,        
-    KC_TRANSPARENT, KC_LABK,        KC_RABK,        KC_LPRN,        KC_RPRN,        KC_AT,          KC_CIRC,        KC_EQUAL,       KC_MINUS,       KC_DLR,         KC_COLN,        KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_GRAVE,       KC_QUOTE,       KC_LBRC,        KC_RBRC,        KC_PERC,        KC_HASH,        KC_UNDS,        KC_TRANSPARENT, KC_TRANSPARENT, KC_QUES,        KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_DQUO,        KC_PIPE,        KC_EQUAL,       KC_MINUS,       KC_TILD,        KC_TRANSPARENT, KC_UNDS,        KC_TRANSPARENT, KC_TRANSPARENT, KC_PLUS,        KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_HASH,        KC_CIRC,        KC_LBRC,        KC_RBRC,        KC_DLR,         KC_COLN,        KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_GRAVE,       KC_EXLM,        KC_LABK,        KC_RABK,        KC_PERC,        KC_AT,          KC_LCBR,        KC_RCBR,        KC_BSLS,        KC_QUES,        KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
@@ -128,6 +129,8 @@ bool rgb_matrix_indicators_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case MAC_MISSION_CONTROL:
+      HCS(0x29F);
 
     case RGB_SLD:
         if (rawhid_state.rgb_control) {
