@@ -18,7 +18,7 @@ enum custom_keycodes {
 
 // F22 - QK_REP
 // F23 - QK_AREP
-// F24 - Leader TBD
+// F24 - QK_LEAD
 
 enum tap_dance_codes {
   DANCE_0,
@@ -30,7 +30,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     MEH_T(KC_TAB),  KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           QK_REP,                                         QK_AREP,         KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
     ALL_T(KC_ESCAPE),MT(MOD_LALT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),KC_G,           TD(DANCE_0),                                                                    TD(DANCE_1),    KC_H,           MT(MOD_LSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_LCTL, KC_L),MT(MOD_LALT, KC_SCLN),KC_QUOTE,       
     KC_LEFT_SHIFT,  KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RIGHT_SHIFT, 
-    CW_TOGG,        OSM(MOD_MEH),   OSM(MOD_HYPR),  KC_LEFT_CTRL,   KC_LEFT_GUI,    TG(6),                                                                                                          OSL(4),         KC_LEFT_ALT,    KC_NO,         LGUI(LSFT(KC_4)),LGUI(LSFT(KC_5)),LGUI(KC_SPACE), 
+    CW_TOGG,        OSM(MOD_MEH),   OSM(MOD_HYPR),  KC_LEFT_CTRL,   KC_LEFT_GUI,    TG(6),                                                                                                          OSL(4),         KC_LEFT_ALT,    QK_LEAD,         LGUI(LSFT(KC_4)),LGUI(LSFT(KC_5)),LGUI(KC_SPACE), 
     MT(MOD_LSFT, KC_SPACE),LT(1,KC_TAB),   LT(3,KC_ESCAPE),                MT(MOD_LALT, KC_DELETE),LT(2,KC_ENTER), MT(MOD_LSFT, KC_BSPC)
   ),
   [1] = LAYOUT_moonlander(
