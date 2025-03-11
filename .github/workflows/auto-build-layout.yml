@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       zerEm: ${{ steps.filter.outputs.zerEm }}
-      5qJbe: ${{ steps.filter.outputs.5qJbe }}
+      layout5qJbe: ${{ steps.filter.outputs.layout5qJbe }}
       e5WnW: ${{ steps.filter.outputs.e5WnW }}
 
     steps:
@@ -28,7 +28,7 @@ jobs:
           filters: |
             zerEm:
               - 'zerEm/**'
-            5qJbe:
+            layout5qJbe:
               - '5qJbe/**'
             e5WnW:
               - 'e5WnW/**'
@@ -43,7 +43,7 @@ jobs:
 
   build-moonlander-5qJbe:
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.5qJbe == 'true' }}
+    if: ${{ needs.detect-changes.outputs.layout5qJbe == 'true' }}
     uses: ./.github/workflows/fetch-and-build-layout.yml
     with:
       layout_id: 5qJbe
