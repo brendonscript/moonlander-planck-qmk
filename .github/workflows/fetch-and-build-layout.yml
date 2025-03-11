@@ -90,10 +90,18 @@ jobs:
           git submodule update --init --remote --depth=1
           cd qmk_firmware
           git checkout -B firmware${{ steps.download-layout-source.outputs.firmware_version }} origin/firmware${{ steps.download-layout-source.outputs.firmware_version }}
+
+          # Create sparse checkout directories if they don't exist
+          mkdir -p .git/info
+
           # Use sparse checkout to only get what's needed
-          git config --global core.sparseCheckout true
+          git config core.sparseCheckout true
           echo "keyboards/" > .git/info/sparse-checkout
+          git read-tree -mu HEAD
+
+          # Update submodules with limited depth
           git submodule update --init --recursive --depth=1 --recommend-shallow
+
           cd ..
           git add qmk_firmware
           git commit -m "✨(qmk): Update firmware" || echo "No QMK change"
