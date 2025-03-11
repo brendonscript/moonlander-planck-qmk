@@ -3,14 +3,14 @@
 **Planck**: `e5WnW`
 
 **Moonlander Main**: `zerEm`
-**Moonlander Testing**: `p6zbE`
+**Moonlander v3**: `5qJbe`
 
 # Links
 
-https://blog.zsa.io/oryx-custom-qmk-features/
-https://precondition.github.io/home-row-mods#home-row-mod-combos
-https://getreuer.info/posts/keyboards/achordion/index.html
+- https://blog.zsa.io/oryx-custom-qmk-features/
+- https://precondition.github.io/home-row-mods#home-row-mod-combos
+- https://getreuer.info/posts/keyboards/achordion/index.html
 
 # Todos
 
-- [ ] Add mouse layer
+- [x] Add mouse layer
