@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout Repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 1 # Shallow clone for faster checkout
 
       - name: Filter changes
         uses: dorny/paths-filter@v2
