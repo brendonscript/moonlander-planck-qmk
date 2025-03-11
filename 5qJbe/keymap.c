@@ -368,10 +368,10 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
   return get_chordal_hold_default(tap_hold_record, other_record);
 }
 
-// void leader_start_user(void) {
-//     // Do something when the leader key is pressed
-// }
-//
+void leader_start_user(void) {
+    // Do something when the leader key is pressed
+}
+
 void leader_end_user(void) {
     if (leader_sequence_one_key(KC_W)) {
         // Enable Windows Layer
