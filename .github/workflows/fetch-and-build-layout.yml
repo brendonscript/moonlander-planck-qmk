@@ -97,13 +97,7 @@ jobs:
           git push
 
       - name: Build qmk docker image
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: false
-          tags: qmk:latest
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+        run: docker build -t qmk .
 
       - name: Build the layout
         id: build-layout
