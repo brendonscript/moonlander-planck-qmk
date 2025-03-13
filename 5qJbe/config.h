@@ -5,9 +5,9 @@
 #define PERMISSIVE_HOLD
 
 #define USB_SUSPEND_WAKEUP_DELAY 0
-#define SERIAL_NUMBER "5qJbe/dPPX09"
+#define SERIAL_NUMBER "5qJbe/Oaanyg"
 #define LAYER_STATE_16BIT
-#define COMBO_COUNT 4
+#define COMBO_COUNT 3
 #define HCS(report) host_consumer_send(record->event.pressed ? report : 0); return false
 
 #define RGB_MATRIX_STARTUP_SPD 60
