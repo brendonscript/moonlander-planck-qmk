@@ -1,3 +1,2 @@
 #!/usr/bin/env bash
-
-git merge origin/oryx
+git fetch && git merge origin/oryx
