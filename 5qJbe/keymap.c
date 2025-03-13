@@ -529,22 +529,26 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
                       uint16_t other_keycode, keyrecord_t* other_record) {
   // Exceptionally allow some one-handed chords for hotkeys.
   switch (tap_hold_keycode) {
+    case MT(MOD_LSFT, KC_J):
     case LSFT_T(KC_J):
       if (other_keycode == KC_SCLN) {
         return true;
       }
       break;
+    case MT(MOD_LGUI, KC_D):
     case LGUI_T(KC_D):
       if (other_keycode == KC_A) {
         return true;
       }
       break;
 
+    case MT(MOD_LCTL, KC_S):
     case LCTL_T(KC_S):
       if (other_keycode == KC_D) {
         return true;
       }
       break;
+    case MT(MOD_LCTL, KC_L):
     case LCTL_T(KC_L):
       if (other_keycode == KC_U) {
         return true;
@@ -557,13 +561,50 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
 }
 
 void leader_start_user(void) {
-    // Do something when the leader key is pressed
+  // Do something when the leader key is pressed
 }
 
 void leader_end_user(void) {
-    if (leader_sequence_one_key(KC_O)) {
-        // Toggle Windows Layer
-        layer_invert(1);
-    } 
+  if (leader_sequence_two_keys(KC_L, KC_W)) {
+    // Toggle Windows Layer
+    layer_invert(1);
+  } else if (leader_sequence_two_keys(KC_L, KC_R)) {
+    layer_invert(7);
+  } else if (leader_sequence_two_keys(KC_L, KC_V)) {
+    layer_invert(5);
+  } else if (leader_sequence_two_keys(KC_L, KC_M)) {
+    layer_move(0);
+  } else if (leader_sequence_two_keys(KC_C, KC_W)) {
+    // CW_TOGG
+    caps_word_toggle();
+  } else if (leader_sequence_two_keys(KC_C, KC_A)) {
+    SEND_STRING("=>");
+  } else if (leader_sequence_two_keys(KC_C, KC_N)) {
+    SEND_STRING("!=");
+  } else if (leader_sequence_two_keys(KC_C, KC_E)) {
+    SEND_STRING("==");
+  } else if (leader_sequence_two_keys(KC_C, KC_B)) {
+    SEND_STRING("{}" SS_TAP(X_LEFT));
+  } else if (leader_sequence_two_keys(KC_C, KC_C)) {
+    SEND_STRING("()" SS_TAP(X_LEFT));
+  } else if (leader_sequence_two_keys(KC_C, KC_S)) {
+    SEND_STRING("[]" SS_TAP(X_LEFT));
+  } else if (leader_sequence_two_keys(KC_C, KC_P)) {
+    SEND_STRING("<>" SS_TAP(X_LEFT));
+  } else if (leader_sequence_two_keys(KC_S, KC_S)) {
+    if (layer_state_is(1)) {
+      tap_code16(KC_PSCR);
+    } else {
+      tap_code16(LGUI(LSFT(KC_4)));
+    }
+  } else if (leader_sequence_one_key(KC_X)) {
+    tap_code16(KC_DELETE);
+  } else if (leader_sequence_two_keys(KC_T, KC_T)) {
+    tap_code16(LCTL(KC_A));
+  } else if (leader_sequence_two_keys(KC_T, KC_W)) {
+    tap_code16(LALT(KC_A));
+  } else if (leader_sequence_two_keys(KC_V, KC_Y)) {
+    SEND_STRING(SS_TAP(X_ESCAPE) "gg" SS_LSFT("v") SS_LSFT("g"));
+  }
 }
 
