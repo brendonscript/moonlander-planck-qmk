@@ -12,3 +12,6 @@
 
 #define RGB_MATRIX_STARTUP_SPD 60
 
+// Custom
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 250
