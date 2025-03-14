@@ -18,28 +18,20 @@ enum custom_keycodes {
 };
 
 
-typedef struct {
-    uint16_t tap;
-    uint16_t hold;
-    uint16_t held;
-} tap_dance_tap_hold_t;
-tap_dance_action_t *action;
 
 enum tap_dance_codes {
-  DANCE_3,
-  DANCE_6,
   DANCE_0,
   DANCE_1,
   DANCE_2,
+  DANCE_3,
   DANCE_4,
-  DANCE_5,
 };
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [0] = LAYOUT_moonlander(
     KC_GRAVE,       KC_1,           KC_2,           KC_3,           KC_4,           KC_5,           KC_EQUAL,                                       TG(8),          KC_6,           KC_7,           KC_8,           KC_9,           KC_0,           KC_MINUS,       
-    TD(DANCE_0),    KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           TD(DANCE_1),                                    TD(DANCE_4),    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
-    ALL_T(KC_ESCAPE),MT(MOD_LALT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),KC_G,           TD(DANCE_2),                                                                    TD(DANCE_5),    KC_H,           MT(MOD_LSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_LCTL, KC_L),MT(MOD_LALT, KC_SCLN),MEH_T(KC_QUOTE),
-    TD(DANCE_3),    KC_Z,           KC_X,           KC_C,           KC_V,           LT(2,KC_B),                                     LT(3,KC_N),     KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       TD(DANCE_6),    
+    TD(DANCE_0),    KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           TD(DANCE_1),                                    TD(DANCE_3),    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
+    ALL_T(KC_ESCAPE),MT(MOD_LALT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),KC_G,           TD(DANCE_2),                                                                    TD(DANCE_4),    KC_H,           MT(MOD_LSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_LCTL, KC_L),MT(MOD_LALT, KC_SCLN),MEH_T(KC_QUOTE),
+    KC_LEFT_SHIFT,  KC_Z,           KC_X,           KC_C,           KC_V,           LT(2,KC_B),                                     LT(3,KC_N),     KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_RIGHT_SHIFT, 
     CW_TOGG,        TG(6),          KC_APPLICATION, MT(MOD_LCTL, KC_TAB),MT(MOD_LALT, KC_SPACE),KC_F23,                                                                                                         KC_F22,         MT(MOD_LGUI, KC_BSPC),KC_F24,         LGUI(LSFT(KC_4)),LGUI(LSFT(KC_5)),LGUI(KC_SPACE), 
     MT(MOD_LSFT, KC_SPACE),LT(2,KC_TAB),   TT(4),                          KC_F24,         LT(3,KC_ENTER), MT(MOD_LSFT, KC_BSPC)
   ),
@@ -92,9 +84,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_MS_BTN1,     KC_MS_BTN3,     KC_NO,                          QK_LLCK,        TO(0),          KC_MS_BTN2
   ),
   [7] = LAYOUT_moonlander(
-    KC_TRANSPARENT, HSV_0_0_255,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RGB_TOG,                                        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, RGB_SAI,        RGB_HUI,        RGB_VAI,        RGB_SPI,        TOGGLE_LAYER_COLOR,                                KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT, 
-    KC_TRANSPARENT, KC_TRANSPARENT, RGB_SAD,        RGB_HUD,        RGB_VAD,        RGB_SPD,        RGB_SLD,                                                                        KC_TRANSPARENT, KC_MEDIA_PREV_TRACK,KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, HSV_0_0_255,    KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RGB_TOG,                                        AU_TOGG,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, RGB_SAI,        RGB_HUI,        RGB_VAI,        RGB_SPI,        TOGGLE_LAYER_COLOR,                                MU_TOGG,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_MEDIA_PLAY_PAUSE,KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, RGB_SAD,        RGB_HUD,        RGB_VAD,        RGB_SPD,        RGB_SLD,                                                                        MU_NEXT,        KC_MEDIA_PREV_TRACK,KC_AUDIO_VOL_DOWN,KC_AUDIO_VOL_UP,KC_MEDIA_NEXT_TRACK,KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, RGB_MODE_FORWARD,                                KC_TRANSPARENT, KC_AUDIO_MUTE,  KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, 
     TO(0),          KC_TRANSPARENT, KC_TRANSPARENT,                 QK_LLCK,        KC_TRANSPARENT, KC_TRANSPARENT
@@ -126,19 +118,19 @@ void keyboard_post_init_user(void) {
 
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [2] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {188,255,255}, {0,0,0}, {0,0,0}, {90,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {16,255,255}, {90,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {16,255,255}, {90,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {16,255,255}, {90,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,245,245}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {188,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,0}, {0,0,0}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,0}, {0,0,0}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,0}, {0,0,0}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,245,245}, {0,0,0} },
+    [2] = { {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {188,255,255}, {0,0,255}, {0,0,255}, {90,255,255}, {16,255,255}, {0,0,255}, {0,0,255}, {16,255,255}, {90,255,255}, {16,255,255}, {0,0,255}, {0,0,255}, {16,255,255}, {90,255,255}, {16,255,255}, {0,0,255}, {0,0,255}, {16,255,255}, {90,255,255}, {16,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {188,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,255}, {0,0,255}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,255}, {0,0,255}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,255}, {0,0,255}, {43,253,255}, {16,255,255}, {90,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255} },
 
-    [3] = { {187,244,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,0}, {0,0,0}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,0}, {0,0,0}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,0}, {0,0,0}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,0}, {0,0,0}, {0,0,0}, {187,244,255}, {187,244,255}, {0,0,0}, {0,0,0}, {187,244,255}, {0,245,245}, {0,0,0}, {0,0,0}, {0,0,0}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,0}, {0,0,0}, {0,0,0}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,0}, {0,0,0}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,0}, {0,0,0}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,0}, {0,0,0}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,0}, {0,0,0}, {187,244,255}, {187,244,255}, {0,0,0}, {0,0,0}, {0,0,0}, {187,244,255}, {0,0,0}, {0,0,0}, {0,245,245}, {0,0,0} },
+    [3] = { {187,244,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,255}, {0,0,255}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,255}, {0,0,255}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,255}, {0,0,255}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,255}, {0,0,255}, {0,0,255}, {187,244,255}, {187,244,255}, {0,0,255}, {0,0,255}, {187,244,255}, {0,245,245}, {0,0,255}, {0,0,255}, {0,0,255}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,255}, {0,0,255}, {0,0,255}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,255}, {0,0,255}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,255}, {0,0,255}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,255}, {0,0,255}, {187,244,255}, {187,244,255}, {187,244,255}, {0,0,255}, {0,0,255}, {187,244,255}, {187,244,255}, {0,0,255}, {0,0,255}, {0,0,255}, {187,244,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255} },
 
-    [4] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {16,255,255}, {16,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {16,255,255}, {16,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {16,255,255}, {16,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {16,255,255}, {16,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,245,245}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {165,255,255}, {165,255,255}, {165,255,255}, {0,0,0}, {0,0,0}, {165,255,255}, {165,255,255}, {165,255,255}, {165,255,255}, {0,0,0}, {165,255,255}, {165,255,255}, {165,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,245,245}, {0,0,0} },
+    [4] = { {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {16,255,255}, {16,255,255}, {16,255,255}, {0,0,255}, {0,0,255}, {16,255,255}, {16,255,255}, {16,255,255}, {0,0,255}, {0,0,255}, {16,255,255}, {16,255,255}, {16,255,255}, {0,0,255}, {0,0,255}, {16,255,255}, {16,255,255}, {16,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {165,255,255}, {165,255,255}, {165,255,255}, {0,0,255}, {0,0,255}, {165,255,255}, {165,255,255}, {165,255,255}, {165,255,255}, {0,0,255}, {165,255,255}, {165,255,255}, {165,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255} },
 
-    [5] = { {131,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {0,0,0}, {131,255,255}, {0,0,0}, {0,0,0}, {131,255,255}, {131,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {131,255,255}, {0,0,0}, {0,0,0}, {131,255,255}, {131,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {0,0,0}, {131,255,255}, {131,255,255}, {0,245,245}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {131,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {131,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {131,255,255}, {131,255,255}, {0,0,0}, {131,255,255}, {131,255,255}, {0,0,0}, {0,0,0}, {0,245,245}, {0,0,0} },
+    [5] = { {131,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {131,255,255}, {0,0,255}, {131,255,255}, {0,0,255}, {0,0,255}, {131,255,255}, {131,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {131,255,255}, {131,255,255}, {0,0,255}, {0,0,255}, {131,255,255}, {131,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {131,255,255}, {0,0,255}, {131,255,255}, {131,255,255}, {0,245,245}, {0,0,255}, {0,0,255}, {0,0,255}, {131,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {131,255,255}, {131,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {131,255,255}, {131,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {131,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {131,255,255}, {131,255,255}, {0,0,255}, {131,255,255}, {131,255,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255} },
 
-    [6] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {74,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {74,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {74,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {16,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {152,255,255}, {187,244,255}, {0,0,0}, {0,0,0}, {0,0,0}, {152,255,255}, {187,244,255}, {0,0,0}, {0,0,0}, {0,0,0}, {152,255,255}, {187,244,255}, {0,0,0}, {0,0,0}, {0,0,0}, {152,255,255}, {187,244,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {16,255,255}, {0,245,245}, {0,245,245}, {0,0,0} },
+    [6] = { {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {16,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {41,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {74,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {208,139,255}, {208,139,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {152,255,255}, {187,244,255}, {0,0,255}, {0,0,255}, {0,0,255}, {152,255,255}, {187,244,255}, {0,0,255}, {0,0,255}, {0,0,255}, {152,255,255}, {187,244,255}, {0,0,255}, {0,0,255}, {0,0,255}, {152,255,255}, {187,244,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {208,139,255}, {0,245,245}, {0,245,245}, {0,0,255} },
 
-    [7] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {74,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {74,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {74,255,255}, {16,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {74,255,255}, {16,255,255}, {131,255,255}, {0,245,245}, {0,245,245}, {0,245,245}, {0,245,245}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {90,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {90,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {90,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {43,253,255}, {16,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {43,253,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,245,245}, {0,0,0} },
+    [7] = { {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {74,255,255}, {16,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {74,255,255}, {16,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {74,255,255}, {16,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {74,255,255}, {16,255,255}, {131,255,255}, {0,245,245}, {0,245,245}, {0,245,245}, {0,245,245}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {90,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {90,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {90,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {43,253,255}, {16,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {43,253,255}, {0,0,255}, {131,255,255}, {131,255,255}, {131,255,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255} },
 
-    [8] = { {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,245,245}, {0,0,0}, {16,255,255}, {0,0,0}, {0,0,0}, {0,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,245,245}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {16,255,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {43,253,255}, {0,0,0}, {0,0,0}, {0,0,0}, {0,0,0}, {90,255,255}, {0,0,0}, {187,244,255}, {0,0,0}, {16,255,255}, {0,0,0}, {131,255,255}, {74,255,255}, {0,0,0}, {0,0,0}, {0,245,245}, {0,0,0} },
+    [8] = { {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255}, {16,255,255}, {0,0,255}, {0,0,255}, {0,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {16,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {43,253,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {90,255,255}, {0,0,255}, {187,244,255}, {0,0,255}, {16,255,255}, {0,0,255}, {131,255,255}, {74,255,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255} },
 
 };
 
@@ -234,14 +226,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     case MAC_MISSION_CONTROL:
       HCS(0x29F);
 
-    case TD(DANCE_3):
-    case TD(DANCE_6):
-        action = &tap_dance_actions[TD_INDEX(keycode)];
-        if (!record->event.pressed && action->state.count && !action->state.finished) {
-            tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)action->user_data;
-            tap_code16(tap_hold->tap);
-        }
-        break;
     case RGB_SLD:
         if (rawhid_state.rgb_control) {
             return false;
@@ -263,35 +247,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   return true;
 }
 
-void tap_dance_tap_hold_finished(tap_dance_state_t *state, void *user_data) {
-    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
-
-    if (state->pressed) {
-        if (state->count == 1
-#ifndef PERMISSIVE_HOLD
-            && !state->interrupted
-#endif
-        ) {
-            register_code16(tap_hold->hold);
-            tap_hold->held = tap_hold->hold;
-        } else {
-            register_code16(tap_hold->tap);
-            tap_hold->held = tap_hold->tap;
-        }
-    }
-}
-
-void tap_dance_tap_hold_reset(tap_dance_state_t *state, void *user_data) {
-    tap_dance_tap_hold_t *tap_hold = (tap_dance_tap_hold_t *)user_data;
-
-    if (tap_hold->held) {
-        unregister_code16(tap_hold->held);
-        tap_hold->held = 0;
-    }
-}
-
-#define ACTION_TAP_DANCE_TAP_HOLD(tap, hold) \
-    { .fn = {NULL, tap_dance_tap_hold_finished, tap_dance_tap_hold_reset}, .user_data = (void *)&((tap_dance_tap_hold_t){tap, hold, 0}), }
 
 typedef struct {
     bool is_press_action;
@@ -423,11 +378,11 @@ void dance_2_reset(tap_dance_state_t *state, void *user_data) {
     }
     dance_state[2].step = 0;
 }
-void on_dance_4(tap_dance_state_t *state, void *user_data);
-void dance_4_finished(tap_dance_state_t *state, void *user_data);
-void dance_4_reset(tap_dance_state_t *state, void *user_data);
+void on_dance_3(tap_dance_state_t *state, void *user_data);
+void dance_3_finished(tap_dance_state_t *state, void *user_data);
+void dance_3_reset(tap_dance_state_t *state, void *user_data);
 
-void on_dance_4(tap_dance_state_t *state, void *user_data) {
+void on_dance_3(tap_dance_state_t *state, void *user_data) {
     if(state->count == 3) {
         tap_code16(KC_RCBR);
         tap_code16(KC_RCBR);
@@ -438,7 +393,7 @@ void on_dance_4(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_4_finished(tap_dance_state_t *state, void *user_data) {
+void dance_3_finished(tap_dance_state_t *state, void *user_data) {
     dance_state[3].step = dance_step(state);
     switch (dance_state[3].step) {
         case SINGLE_TAP: register_code16(KC_RCBR); break;
@@ -447,7 +402,7 @@ void dance_4_finished(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_4_reset(tap_dance_state_t *state, void *user_data) {
+void dance_3_reset(tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[3].step) {
         case SINGLE_TAP: unregister_code16(KC_RCBR); break;
@@ -456,11 +411,11 @@ void dance_4_reset(tap_dance_state_t *state, void *user_data) {
     }
     dance_state[3].step = 0;
 }
-void on_dance_5(tap_dance_state_t *state, void *user_data);
-void dance_5_finished(tap_dance_state_t *state, void *user_data);
-void dance_5_reset(tap_dance_state_t *state, void *user_data);
+void on_dance_4(tap_dance_state_t *state, void *user_data);
+void dance_4_finished(tap_dance_state_t *state, void *user_data);
+void dance_4_reset(tap_dance_state_t *state, void *user_data);
 
-void on_dance_5(tap_dance_state_t *state, void *user_data) {
+void on_dance_4(tap_dance_state_t *state, void *user_data) {
     if(state->count == 3) {
         tap_code16(KC_RPRN);
         tap_code16(KC_RPRN);
@@ -471,7 +426,7 @@ void on_dance_5(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_5_finished(tap_dance_state_t *state, void *user_data) {
+void dance_4_finished(tap_dance_state_t *state, void *user_data) {
     dance_state[4].step = dance_step(state);
     switch (dance_state[4].step) {
         case SINGLE_TAP: register_code16(KC_RPRN); break;
@@ -480,7 +435,7 @@ void dance_5_finished(tap_dance_state_t *state, void *user_data) {
     }
 }
 
-void dance_5_reset(tap_dance_state_t *state, void *user_data) {
+void dance_4_reset(tap_dance_state_t *state, void *user_data) {
     wait_ms(10);
     switch (dance_state[4].step) {
         case SINGLE_TAP: unregister_code16(KC_RPRN); break;
@@ -491,11 +446,9 @@ void dance_5_reset(tap_dance_state_t *state, void *user_data) {
 }
 
 tap_dance_action_t tap_dance_actions[] = {
-        [DANCE_3] = ACTION_TAP_DANCE_TAP_HOLD(LCTL(KC_A), KC_LEFT_SHIFT),
-        [DANCE_6] = ACTION_TAP_DANCE_TAP_HOLD(LALT(KC_A), KC_RIGHT_SHIFT),
         [DANCE_0] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_0, dance_0_finished, dance_0_reset),
         [DANCE_1] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_1, dance_1_finished, dance_1_reset),
         [DANCE_2] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_2, dance_2_finished, dance_2_reset),
+        [DANCE_3] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_3, dance_3_finished, dance_3_reset),
         [DANCE_4] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_4, dance_4_finished, dance_4_reset),
-        [DANCE_5] = ACTION_TAP_DANCE_FN_ADVANCED(on_dance_5, dance_5_finished, dance_5_reset),
 };
