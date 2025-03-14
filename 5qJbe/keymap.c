@@ -490,16 +490,16 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
         return true;
       }
       break;
-    case LGUI_T(KC_D):
-      if (other_keycode == KC_A) {
-        return true;
-      }
-      break;
-    case LCTL_T(KC_S):
-      if (other_keycode == KC_D) {
-        return true;
-      }
-      break;
+    // case LGUI_T(KC_D):
+    //   if (other_keycode == KC_A) {
+    //     return true;
+    //   }
+    //   break;
+    // case LCTL_T(KC_S):
+    //   if (other_keycode == KC_D) {
+    //     return true;
+    //   }
+    //   break;
     case LCTL_T(KC_L):
       if (other_keycode == KC_U) {
         return true;
