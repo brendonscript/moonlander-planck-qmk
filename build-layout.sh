@@ -18,20 +18,18 @@ REPO="brendonscript/moonlander-qmk"
 
 # Define layout mapping
 declare -A layouts
-layouts["1"]="zerEm:moonlander"
-layouts["2"]="5qJbe:moonlander"
-layouts["3"]="e5WnW:planck_ez/glow"
+layouts["1"]="5qJbe:moonlander"
+layouts["2"]="e5WnW:planck_ez/glow"
 
 # Show menu
 echo "Select a layout to build:"
-echo "1) zerEm (Moonlander)"
-echo "2) 5qJbe (Moonlander v3)"
-echo "3) e5WnW (Planck)"
-read -p "Enter selection [1-3]: " choice
+echo "1) 5qJbe (Moonlander v3)"
+echo "2) e5WnW (Planck)"
+read -p "Enter selection [1-2]: " choice
 
 # Validate choice
 if [[ ! "${layouts[$choice]}" ]]; then
-  echo "Invalid selection. Please choose 1, 2, or 3."
+  echo "Invalid selection. Please choose 1, or 2."
   exit 1
 fi
 

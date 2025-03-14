@@ -27,4 +27,8 @@
 
 // Custom
 
-#define CHORDAL_HOLD
+#undef LEADER_TIMEOUT
+#define LEADER_NO_TIMEOUT
+#define LEADER_PER_KEY_TIMING
+#define LEADER_TIMEOUT 400
+#define QUICK_TAP_TERM 0

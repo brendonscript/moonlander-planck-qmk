@@ -3,7 +3,6 @@ name: Auto Build Layout
 on:
   push:
     paths:
-      - "zerEm/**"
       - "5qJbe/**"
       - "e5WnW/**"
 
@@ -11,7 +10,6 @@ jobs:
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
-      zerEm: ${{ steps.filter.outputs.zerEm }}
       layout5qJbe: ${{ steps.filter.outputs.layout5qJbe }}
       e5WnW: ${{ steps.filter.outputs.e5WnW }}
 
@@ -26,20 +24,10 @@ jobs:
         id: filter
         with:
           filters: |
-            zerEm:
-              - 'zerEm/**'
             layout5qJbe:
               - '5qJbe/**'
             e5WnW:
               - 'e5WnW/**'
-
-  build-moonlander-zerEm:
-    needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.zerEm == 'true' }}
-    uses: ./.github/workflows/fetch-and-build-layout.yml
-    with:
-      layout_id: zerEm
-      layout_geometry: moonlander
 
   build-moonlander-5qJbe:
     needs: detect-changes
