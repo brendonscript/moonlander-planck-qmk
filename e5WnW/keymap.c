@@ -23,8 +23,11 @@ enum planck_layers {
 #define RAISE MO(_RAISE)
 
 // F22 - QK_REP
+// %s/QK_REP/QK_REP/g
 // F23 - QK_AREP
+// %s/QK_AREP/QK_AREP/g
 // F24 - QK_LEAD
+// %s/QK_LEAD/QK_LEAD/g
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_planck_grid(
     MEH_T(KC_TAB),  KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSPC,        
