@@ -44,7 +44,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     TD(DANCE_0),    KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           TD(DANCE_1),                                    TD(DANCE_3),    KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
     ALL_T(KC_ESCAPE),MT(MOD_LALT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),KC_G,           TD(DANCE_2),                                                                    TD(DANCE_4),    KC_H,           MT(MOD_LSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_LCTL, KC_L),MT(MOD_LALT, KC_SCLN),MEH_T(KC_QUOTE),
     KC_LEFT_SHIFT,  LT(2,KC_Z),     KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         LT(3,KC_SLASH), KC_RIGHT_SHIFT, 
-    CW_TOGG,        TG(6),          KC_APPLICATION, MT(MOD_LCTL, KC_TAB),MT(MOD_LALT, KC_SPACE),QK_AREP,                                                                                                         QK_REP,         MT(MOD_LGUI, KC_BSPC),QK_LEAD,         LGUI(LSFT(KC_4)),LGUI(LSFT(KC_5)),LGUI(KC_SPACE), 
+    CW_TOGG,        TG(6),          TT(4),          MT(MOD_LCTL, KC_TAB),MT(MOD_LALT, KC_SPACE),QK_AREP,                                                                                                         QK_REP,         MT(MOD_LGUI, KC_BSPC),QK_LEAD,         LGUI(LSFT(KC_4)),LGUI(LSFT(KC_5)),LGUI(KC_SPACE), 
     MT(MOD_LSFT, KC_SPACE),LT(2,KC_TAB),   TT(4),                          QK_LEAD,         LT(3,KC_ENTER), MT(MOD_LSFT, KC_BSPC)
   ),
   [1] = LAYOUT_moonlander(
@@ -90,7 +90,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [6] = LAYOUT_moonlander(
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_MS_WH_LEFT,  KC_MS_WH_DOWN,  KC_MS_WH_UP,    KC_MS_WH_RIGHT, KC_NO,          KC_NO,          
-    KC_NO,          KC_NO,          KC_MS_ACCEL0,   KC_MS_ACCEL1,   KC_MS_ACCEL2,   KC_NO,          KC_NO,                                                                          KC_NO,          KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_NO,          KC_NO,          
+    KC_TRANSPARENT, KC_NO,          KC_MS_ACCEL0,   KC_MS_ACCEL1,   KC_MS_ACCEL2,   KC_NO,          KC_NO,                                                                          KC_NO,          KC_MS_LEFT,     KC_MS_DOWN,     KC_MS_UP,       KC_MS_RIGHT,    KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,                                                                                                 KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_MS_BTN1,     KC_MS_BTN3,     KC_NO,                          QK_LLCK,        TO(0),          KC_MS_BTN2
@@ -106,20 +106,20 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [8] = LAYOUT_moonlander(
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                          KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_NO,          EE_CLR,         QK_BOOT,        KC_NO,          KC_NO,                                          TO(1),          TO(7),          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
-    KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                                                          TO(0),          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
+    KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,                                                                          TO(0),          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_NO,          CM_TOGG,        KC_NO,          KC_NO,                                          MAGIC_TOGGLE_NKRO,KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          
     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, QK_DYNAMIC_TAPPING_TERM_UP,QK_DYNAMIC_TAPPING_TERM_DOWN,QK_DYNAMIC_TAPPING_TERM_PRINT,KC_NO,          KC_NO,          
     TO(0),          KC_TRANSPARENT, KC_TRANSPARENT,                 QK_LLCK,        KC_TRANSPARENT, KC_TRANSPARENT
   ),
 };
-const uint16_t PROGMEM combo0[] = { MT(MOD_LSFT, KC_BSPC), LT(2,KC_TAB), COMBO_END};
-const uint16_t PROGMEM combo1[] = { MT(MOD_LSFT, KC_SPACE), LT(3,KC_ENTER), COMBO_END};
-const uint16_t PROGMEM combo2[] = { MT(MOD_LSFT, KC_SPACE), MT(MOD_LSFT, KC_BSPC), COMBO_END};
+const uint16_t PROGMEM combo0[] = { MT(MOD_LSFT, KC_BSPC), MT(MOD_LSFT, KC_SPACE), COMBO_END};
+const uint16_t PROGMEM combo1[] = { MT(MOD_LSFT, KC_BSPC), MT(MOD_LALT, KC_SPACE), COMBO_END};
+const uint16_t PROGMEM combo2[] = { LT(2,KC_TAB), LT(3,KC_ENTER), COMBO_END};
 
 combo_t key_combos[COMBO_COUNT] = {
-    COMBO(combo0, OSL(2)),
-    COMBO(combo1, OSL(3)),
-    COMBO(combo2, KC_DELETE),
+    COMBO(combo0, TT(4)),
+    COMBO(combo1, KC_DELETE),
+    COMBO(combo2, TT(6)),
 };
 
 extern rgb_config_t rgb_matrix_config;
