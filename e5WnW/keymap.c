@@ -8,7 +8,6 @@
 enum planck_keycodes {
   RGB_SLD = EZ_SAFE_RANGE,
   HSV_0_0_255,
-  MAC_MISSION_CONTROL,
 };
 
 
@@ -40,14 +39,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
-    KC_TRANSPARENT, KC_TRANSPARENT, CW_TOGG,        KC_PSCR,        MAC_MISSION_CONTROL,KC_TRANSPARENT, LGUI(KC_LEFT),  LGUI(KC_DOWN),  LGUI(KC_UP),    LGUI(KC_RIGHT), LGUI(KC_SPACE), KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_TRANSPARENT, CW_TOGG,        KC_PSCR,        KC_TRANSPARENT, KC_TRANSPARENT, LGUI(KC_LEFT),  LGUI(KC_DOWN),  LGUI(KC_UP),    LGUI(KC_RIGHT), LGUI(KC_SPACE), KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_LEFT_ALT,    KC_LEFT_CTRL,   KC_LEFT_GUI,    KC_LEFT_SHIFT,  KC_TRANSPARENT, KC_LEFT,        KC_DOWN,        KC_UP,          KC_RIGHT,       KC_TRANSPARENT, KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_MAC_UNDO,    KC_MAC_CUT,     KC_MAC_COPY,    KC_MAC_PASTE,   KC_TRANSPARENT, LALT(KC_LEFT),  LALT(KC_DOWN),  LALT(KC_UP),    LALT(KC_RIGHT), KC_TRANSPARENT, KC_TRANSPARENT, 
     TO(0),          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, QK_LLCK,        KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
   [_RAISE] = LAYOUT_planck_grid(
-    KC_TRANSPARENT, KC_TRANSPARENT, KC_PIPE,        KC_HASH,        KC_TILD,        KC_NO,          KC_AT,          KC_UNDS,        KC_CIRC,        KC_DLR,         KC_PLUS,        KC_TRANSPARENT, 
+    KC_TRANSPARENT, KC_DQUO,        KC_PIPE,        KC_HASH,        KC_TILD,        KC_NO,          KC_AT,          KC_UNDS,        KC_CIRC,        KC_DLR,         KC_PLUS,        KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_LABK,        KC_LBRC,        KC_LCBR,        KC_LPRN,        KC_EQUAL,       KC_COLN,        KC_RPRN,        KC_RCBR,        KC_RBRC,        KC_RABK,        KC_TRANSPARENT, 
     KC_TRANSPARENT, KC_EXLM,        KC_MINUS,       KC_GRAVE,       KC_ASTR,        KC_PERC,        KC_NO,          KC_AMPR,        KC_NO,          KC_BSLS,        KC_QUES,        KC_TRANSPARENT, 
     TO(0),          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, QK_LLCK,        KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
@@ -99,7 +98,7 @@ void keyboard_post_init_user(void) {
 }
 
 const uint8_t PROGMEM ledmap[][RGB_MATRIX_LED_COUNT][3] = {
-    [1] = { {0,0,255}, {0,0,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,255}, {0,0,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255} },
+    [1] = { {0,0,255}, {0,0,255}, {188,255,255}, {188,255,255}, {0,0,255}, {0,0,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,255}, {0,0,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,255}, {0,0,255}, {0,0,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,255}, {188,255,255}, {188,255,255}, {188,255,255}, {188,255,255}, {0,0,255}, {0,0,255}, {0,245,245}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255} },
 
     [2] = { {0,0,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {0,0,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {0,0,255}, {0,0,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {0,0,255}, {0,0,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {74,255,255}, {0,0,255}, {74,255,255}, {0,0,255}, {74,255,255}, {74,255,255}, {0,0,255}, {0,245,245}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255}, {0,0,255} },
 
@@ -164,8 +163,6 @@ bool rgb_matrix_indicators_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
-    case MAC_MISSION_CONTROL:
-      HCS(0x29F);
 
     case RGB_SLD:
         if (rawhid_state.rgb_control) {
