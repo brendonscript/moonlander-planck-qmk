@@ -29,7 +29,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRAVE,       KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSPC,        
     ALL_T(KC_ESCAPE),MT(MOD_LALT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),KC_G,           KC_H,           MT(MOD_LSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_LCTL, KC_L),MT(MOD_LALT, KC_SCLN),MEH_T(KC_QUOTE),
     MT(MOD_LSFT, KC_TAB),KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       KC_ENTER,       
-    CW_TOGG,        LGUI(KC_SPACE), KC_LEFT_CTRL,   KC_LEFT_ALT,    LOWER,          MT(MOD_LSFT, KC_SPACE),KC_NO,          RAISE,          KC_LEFT_GUI,    KC_F22,         KC_F23,         KC_F24
+    KC_LEFT_CTRL,   CW_TOGG,        LGUI(KC_SPACE), KC_LEFT_ALT,    LOWER,          MT(MOD_LSFT, KC_SPACE),KC_NO,          RAISE,          KC_LEFT_GUI,    KC_F22,         KC_F23,         KC_F24
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
