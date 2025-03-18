@@ -268,7 +268,7 @@ const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
     'L','L','L','L','L','L','R','R','R','R','R','R',        
     'L','L','L','L','L','L','R','R','R','R','R','R',        
     'L','L','L','L','L','L','R','R','R','R','R','R',        
-    'L','L','L','L','L','*','*','R','R','R','R','R'        
+    '*','*','*','*','*','*','*','*','*','*','*','*'        
   );
 
 
@@ -306,16 +306,7 @@ void leader_start_user(void) {
 }
 
 void leader_end_user(void) {
-  if (leader_sequence_two_keys(KC_L, KC_W)) {
-    // Toggle Windows Layer
-    layer_invert(1);
-  } else if (leader_sequence_two_keys(KC_L, KC_R)) {
-    layer_invert(7);
-  } else if (leader_sequence_two_keys(KC_L, KC_V)) {
-    layer_invert(5);
-  } else if (leader_sequence_two_keys(KC_L, KC_M)) {
-    layer_move(0);
-  } else if (leader_sequence_two_keys(KC_C, KC_W)) {
+  if (leader_sequence_two_keys(KC_C, KC_W)) {
     // CW_TOGG
     caps_word_toggle();
   } else if (leader_sequence_two_keys(KC_C, KC_A)) {
