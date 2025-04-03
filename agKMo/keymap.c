@@ -24,12 +24,26 @@ enum planck_layers {
 #define LOWER MO(_LOWER)
 #define RAISE MO(_RAISE)
 
+// Use with visual selection (Ctrl+R to paste)
+//
+// F22 - QK_REP
+// '<,'>s/KC_F22/QK_REP
+//
+// F23 - QK_AREP
+// '<,'>s/KC_F23/QK_AREP
+//
+// F24 - QK_LEAD
+// '<,'>s/KC_F24/QK_LEAD
+//
+// Run all replacements
+// '<,'>s/KC_F22/QK_REP/g | '<,'>s/KC_F23/QK_AREP/g | '<,'>s/KC_F24/QK_LEAD/g
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_BASE] = LAYOUT_planck_grid(
     KC_GRAVE,       KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
     ALL_T(KC_ESCAPE),MT(MOD_LALT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),KC_G,           KC_H,           MT(MOD_LSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_LCTL, KC_L),MT(MOD_LALT, KC_SCLN),MEH_T(KC_QUOTE),
     MT(MOD_LSFT, KC_TAB),KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       MT(MOD_LSFT, KC_ENTER),
-    LGUI(KC_SPACE), KC_TRANSPARENT, MO(5),          LT(4,KC_TAB),   LT(_LOWER, KC_ENTER),KC_SPACE,       KC_NO,          LT(_RAISE, KC_BSPC),LT(6,KC_DELETE),KC_F23,         KC_F22,         KC_F24
+    LGUI(KC_SPACE), KC_TRANSPARENT, MO(5),          LT(4,KC_TAB),   LT(_LOWER, KC_ENTER),KC_SPACE,       KC_NO,          LT(_RAISE, KC_BSPC),LT(6,KC_DELETE),QK_AREP,         QK_REP,         QK_LEAD
   ),
 
   [_LOWER] = LAYOUT_planck_grid(
@@ -182,3 +196,81 @@ uint16_t layer_state_set_user(uint16_t state) {
 
 
 
+// Custom
+
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+  LAYOUT_planck_grid(
+    'L','L','L','L','L','L','R','R','R','R','R','R',        
+    'L','L','L','L','L','L','R','R','R','R','R','R',        
+    'L','L','L','L','L','L','R','R','R','R','R','R',        
+    '*','*','*','*','*','*','*','*','*','*','*','*'        
+  );
+
+
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
+                      uint16_t other_keycode, keyrecord_t* other_record) {
+  // Exceptionally allow some one-handed chords for hotkeys.
+  switch (tap_hold_keycode) {
+    case LSFT_T(KC_J):
+      if (other_keycode == KC_SCLN) {
+        return true;
+      }
+      break;
+    // case LGUI_T(KC_D):
+    //   if (other_keycode == KC_A) {
+    //     return true;
+    //   }
+    //   break;
+    // case LCTL_T(KC_S):
+    //   if (other_keycode == KC_D) {
+    //     return true;
+    //   }
+    //   break;
+    case LCTL_T(KC_L):
+      if (other_keycode == KC_U) {
+        return true;
+      }
+      break;
+  }
+  // Otherwise defer to the opposite hands rule.
+  return get_chordal_hold_default(tap_hold_record, other_record);
+}
+
+void leader_start_user(void) {
+  // Do something when the leader key is pressed
+}
+
+void leader_end_user(void) {
+  if (leader_sequence_two_keys(KC_C, KC_W)) {
+    // CW_TOGG
+    caps_word_toggle();
+  } else if (leader_sequence_two_keys(KC_C, KC_A)) {
+    SEND_STRING("=>");
+  } else if (leader_sequence_two_keys(KC_C, KC_N)) {
+    SEND_STRING("!=");
+  } else if (leader_sequence_two_keys(KC_C, KC_E)) {
+    SEND_STRING("==");
+  } else if (leader_sequence_two_keys(KC_C, KC_B)) {
+    SEND_STRING("{}" SS_TAP(X_LEFT));
+  } else if (leader_sequence_two_keys(KC_C, KC_C)) {
+    SEND_STRING("()" SS_TAP(X_LEFT));
+  } else if (leader_sequence_two_keys(KC_C, KC_S)) {
+    SEND_STRING("[]" SS_TAP(X_LEFT));
+  } else if (leader_sequence_two_keys(KC_C, KC_P)) {
+    SEND_STRING("<>" SS_TAP(X_LEFT));
+  } else if (leader_sequence_two_keys(KC_S, KC_S)) {
+    if (layer_state_is(1)) {
+      tap_code16(KC_PSCR);
+    } else {
+      tap_code16(LGUI(LSFT(KC_4)));
+    }
+  } else if (leader_sequence_one_key(KC_X)) {
+    tap_code16(KC_DELETE);
+  } else if (leader_sequence_two_keys(KC_T, KC_T)) {
+    tap_code16(LCTL(KC_A));
+  } else if (leader_sequence_two_keys(KC_T, KC_W)) {
+    tap_code16(LALT(KC_A));
+  } else if (leader_sequence_two_keys(KC_V, KC_Y)) {
+    SEND_STRING(SS_TAP(X_ESCAPE) "gg" SS_LSFT("v") SS_LSFT("g"));
+  }
+}
