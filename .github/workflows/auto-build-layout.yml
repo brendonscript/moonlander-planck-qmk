@@ -4,14 +4,14 @@ on:
   push:
     paths:
       - "5qJbe/**"
-      - "e5WnW/**"
+      - "agKMo/**"
 
 jobs:
   detect-changes:
     runs-on: ubuntu-latest
     outputs:
       layout5qJbe: ${{ steps.filter.outputs.layout5qJbe }}
-      e5WnW: ${{ steps.filter.outputs.e5WnW }}
+      agKMo: ${{ steps.filter.outputs.e5WnW }}
 
     steps:
       - name: Checkout Repository
@@ -26,8 +26,8 @@ jobs:
           filters: |
             layout5qJbe:
               - '5qJbe/**'
-            e5WnW:
-              - 'e5WnW/**'
+            agKMo:
+              - 'agKMo/**'
 
   build-moonlander-5qJbe:
     needs: detect-changes
@@ -37,10 +37,10 @@ jobs:
       layout_id: 5qJbe
       layout_geometry: moonlander
 
-  build-planck-e5WnW:
+  build-planck-agKMo:
     needs: detect-changes
-    if: ${{ needs.detect-changes.outputs.e5WnW == 'true' }}
+    if: ${{ needs.detect-changes.outputs.agKMo == 'true' }}
     uses: ./.github/workflows/fetch-and-build-layout.yml
     with:
-      layout_id: e5WnW
+      layout_id: agKMo
       layout_geometry: planck_ez/glow

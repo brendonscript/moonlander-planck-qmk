@@ -4,12 +4,12 @@ on:
   workflow_dispatch:
     inputs:
       layout_id:
-        description: "5qJbe (Moonlander v3) or e5WnW (Planck v1)"
+        description: "5qJbe (Moonlander v3) or agKMo (Planck v1)"
         required: true
         type: choice
         options:
           - "5qJbe"
-          - "e5WnW"
+          - "agKMo"
         default: "5qJbe"
       layout_geometry:
         description: "Keyboard type"
