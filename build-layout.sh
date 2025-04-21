@@ -19,12 +19,12 @@ REPO="brendonscript/moonlander-qmk"
 # Define layout mapping
 declare -A layouts
 layouts["1"]="5qJbe:moonlander"
-layouts["2"]="e5WnW:planck_ez/glow"
+layouts["2"]="agKMo:planck_ez/glow"
 
 # Show menu
 echo "Select a layout to build:"
 echo "1) 5qJbe (Moonlander v3)"
-echo "2) e5WnW (Planck)"
+echo "2) agKMo (Planck)"
 read -p "Enter selection [1-2]: " choice
 
 # Validate choice
