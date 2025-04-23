@@ -561,6 +561,10 @@ void leader_end_user(void) {
     SEND_STRING("[]" SS_TAP(X_LEFT));
   } else if (leader_sequence_two_keys(KC_C, KC_P)) {
     SEND_STRING("<>" SS_TAP(X_LEFT));
+  } else if (leader_sequence_two_keys(KC_A, KC_A)) {
+    tap_code16(LCTL(KC_A));
+  } else if (leader_sequence_two_keys(KC_A, KC_W)) {
+    tap_code16(LALT(KC_A));
   } else if (leader_sequence_two_keys(KC_S, KC_S)) {
     if (layer_state_is(1)) {
       tap_code16(KC_PSCR);
