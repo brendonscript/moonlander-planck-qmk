@@ -67,9 +67,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_RAISE] = LAYOUT_planck_grid(
-    KC_BSLS,        KC_LCBR,        KC_RCBR,        KC_LBRC,        KC_RBRC,        KC_TILD,        KC_NO,          KC_NO,          KC_UNDS,        KC_COLN,        KC_AT,          KC_TRANSPARENT, 
-    KC_ASTR,        KC_PERC,        KC_EQUAL,       KC_LPRN,        KC_RPRN,        KC_PLUS,        KC_HASH,        KC_LEFT_SHIFT,  KC_LEFT_GUI,    KC_LEFT_CTRL,   KC_LEFT_ALT,    KC_TRANSPARENT, 
-    KC_AT,          KC_PIPE,        KC_EXLM,        KC_LABK,        KC_RABK,        KC_AMPR,        KC_COLN,        KC_CIRC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_DLR,         KC_HYPR,        
+    KC_BSLS,        KC_AMPR,        KC_PERC,        KC_LABK,        KC_RABK,        KC_TILD,        KC_NO,          KC_NO,          KC_UNDS,        KC_COLN,        KC_AT,          KC_TRANSPARENT, 
+    KC_ASTR,        KC_LBRC,        KC_RBRC,        KC_LPRN,        KC_RPRN,        KC_EQUAL,       KC_HASH,        KC_LEFT_SHIFT,  KC_LEFT_GUI,    KC_LEFT_CTRL,   KC_LEFT_ALT,    KC_TRANSPARENT, 
+    KC_AT,          KC_PIPE,        KC_EXLM,        KC_LCBR,        KC_RCBR,        KC_PLUS,        KC_COLN,        KC_CIRC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_DLR,         KC_HYPR,        
     KC_UNDS,        KC_HASH,        KC_DLR,         KC_CIRC,        KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
   ),
 
@@ -130,9 +130,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
 
   [_LAYER11] = LAYOUT_planck_grid(
-    KC_BSLS,        KC_LCBR,        KC_RCBR,        KC_LBRC,        KC_RBRC,        KC_TILD,        KC_NO,          KC_NO,          KC_UNDS,        KC_COLN,        KC_AT,          KC_TRANSPARENT, 
-    KC_ASTR,        KC_PERC,        KC_EQUAL,       KC_LPRN,        KC_RPRN,        KC_PLUS,        KC_HASH,        KC_LEFT_SHIFT,  KC_LEFT_CTRL,   KC_LEFT_GUI,    KC_LEFT_ALT,    KC_MEH,         
-    KC_AT,          KC_PIPE,        KC_EXLM,        KC_LABK,        KC_RABK,        KC_AMPR,        KC_COLN,        KC_CIRC,        KC_NO,          KC_NO,          KC_DLR,         KC_NO,          
+    KC_BSLS,        KC_AMPR,        KC_PERC,        KC_LABK,        KC_RABK,        KC_TILD,        KC_NO,          KC_NO,          KC_UNDS,        KC_COLN,        KC_AT,          KC_TRANSPARENT, 
+    KC_ASTR,        KC_LBRC,        KC_RBRC,        KC_LPRN,        KC_RPRN,        KC_EQUAL,       KC_HASH,        KC_LEFT_SHIFT,  KC_LEFT_CTRL,   KC_LEFT_GUI,    KC_LEFT_ALT,    KC_MEH,         
+    KC_AT,          KC_PIPE,        KC_EXLM,        KC_LCBR,        KC_RCBR,        KC_PLUS,        KC_COLN,        KC_CIRC,        KC_NO,          KC_NO,          KC_DLR,         KC_NO,          
     KC_UNDS,        KC_HASH,        KC_DLR,         KC_CIRC,        TT(12),         KC_TRANSPARENT, KC_NO,          KC_TRANSPARENT, KC_NO,          KC_NO,          KC_NO,          KC_NO
   ),
 
