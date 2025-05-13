@@ -23,7 +23,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KC_GRAVE,       KC_Q,           KC_W,           KC_E,           KC_R,           KC_T,           TT(5),                                          TT(6),          KC_Y,           KC_U,           KC_I,           KC_O,           KC_P,           KC_BSLS,        
     ALL_T(KC_ESCAPE),MT(MOD_LALT, KC_A),MT(MOD_LCTL, KC_S),MT(MOD_LGUI, KC_D),MT(MOD_LSFT, KC_F),KC_G,           TD(DANCE_0),                                                                    TD(DANCE_1),    KC_H,           MT(MOD_LSFT, KC_J),MT(MOD_LGUI, KC_K),MT(MOD_LCTL, KC_L),MT(MOD_LALT, KC_SCLN),MEH_T(KC_QUOTE),
     MT(MOD_LSFT, KC_TAB),KC_Z,           KC_X,           KC_C,           KC_V,           KC_B,                                           KC_N,           KC_M,           KC_COMMA,       KC_DOT,         KC_SLASH,       MT(MOD_RSFT, KC_ENTER),
-    CW_TOGG,        LCTL(KC_A),     LALT(KC_A),     KC_TAB,         MT(MOD_LALT, KC_SPACE),OSM(MOD_HYPR),                                                                                                  OSM(MOD_MEH),   MT(MOD_LALT, KC_BSPC),KC_ESCAPE,      KC_MAC_COPY,    KC_MAC_PASTE,   TD(DANCE_2),    
+    CW_TOGG,        LCTL(KC_A),     LALT(KC_A),     LT(2,KC_TAB),   MT(MOD_LALT, KC_SPACE),OSM(MOD_HYPR),                                                                                                  OSM(MOD_MEH),   MT(MOD_LALT, KC_BSPC),LT(3,KC_ENTER), KC_MAC_COPY,    KC_MAC_PASTE,   TD(DANCE_2),    
     LT(2,KC_SPACE), MT(MOD_LALT, KC_ENTER),TT(4),                          TT(7),          MT(MOD_LSFT, KC_ESCAPE),LT(3,KC_BSPC)
   ),
   [1] = LAYOUT_moonlander(
