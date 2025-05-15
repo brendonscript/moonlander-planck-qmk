@@ -358,6 +358,17 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
         return true;
       }
       break;
+
+    case LGUI_T(KC_D):
+      if (other_keycode == KC_W) {
+        return true;
+      }
+      break;
+    case LGUI_T(KC_D):
+      if (other_keycode == KC_R) {
+        return true;
+      }
+      break;
   }
   // Otherwise defer to the opposite hands rule.
   return get_chordal_hold_default(tap_hold_record, other_record);
