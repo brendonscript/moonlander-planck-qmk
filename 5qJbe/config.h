@@ -13,7 +13,7 @@
 #define MOUSEKEY_MAX_SPEED 6
 
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "5qJbe/qm9pXK"
+#define SERIAL_NUMBER "5qJbe/rbONn6"
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 2
 
