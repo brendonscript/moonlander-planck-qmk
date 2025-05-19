@@ -295,6 +295,11 @@ bool rgb_matrix_indicators_user(void) {
   return true;
 }
 
+typedef struct {
+    bool is_press_action;
+    uint8_t step;
+} tap;
+
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
 
