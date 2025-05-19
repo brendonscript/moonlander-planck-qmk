@@ -10,6 +10,11 @@ enum planck_keycodes {
   HSV_0_0_255,
 };
 
+enum tap_dance_codes {
+  DANCE_0,
+  DANCE_1,
+};
+
 
 enum planck_layers {
   _BASE,
