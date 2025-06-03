@@ -1,3 +1,4 @@
+#define FLOW_TAP_TERM 75
 #define CHORDAL_HOLD
 #define PERMISSIVE_HOLD
 
@@ -13,7 +14,7 @@
 #define MOUSEKEY_MAX_SPEED 6
 
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "5qJbe/pjbrlX"
+#define SERIAL_NUMBER "5qJbe/9DO5EL"
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 2
 
