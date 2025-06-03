@@ -14,7 +14,7 @@
 #define MOUSEKEY_MAX_SPEED 6
 
 #define CAPS_LOCK_STATUS
-#define SERIAL_NUMBER "5qJbe/9DO5EL"
+#define SERIAL_NUMBER "5qJbe/jZLage"
 #define LAYER_STATE_16BIT
 #define COMBO_COUNT 2
 

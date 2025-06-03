@@ -10,6 +10,8 @@
 enum custom_keycodes {
   RGB_SLD = ML_SAFE_RANGE,
   HSV_0_0_255,
+  ST_MACRO_0,
+  ST_MACRO_1,
 };
 
 
@@ -56,8 +58,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   ),
   [3] = LAYOUT_moonlander(
     KC_TILD,        KC_EXLM,        KC_AT,          KC_HASH,        KC_DLR,         KC_PERC,        KC_PLUS,                                        KC_EQUAL,       KC_CIRC,        KC_AMPR,        KC_ASTR,        KC_LPRN,        KC_RPRN,        KC_TRANSPARENT, 
-    KC_ASTR,        KC_AMPR,        KC_PERC,        KC_LCBR,        KC_RCBR,        KC_BSLS,        KC_COLN,                                        KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, 
-    KC_UNDS,        KC_CIRC,        KC_DLR,         KC_LPRN,        KC_RPRN,        KC_EQUAL,       KC_HASH,                                                                        QK_LLCK,        KC_HASH,        KC_LEFT_SHIFT,  KC_LEFT_GUI,    KC_LEFT_CTRL,   KC_LEFT_ALT,    KC_TRANSPARENT, 
+    KC_ASTR,        KC_AMPR,        KC_PERC,        KC_LCBR,        KC_RCBR,        KC_BSLS,        ST_MACRO_0,                                     KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_NO,          KC_TRANSPARENT, 
+    KC_UNDS,        KC_CIRC,        KC_DLR,         KC_LPRN,        KC_RPRN,        KC_EQUAL,       ST_MACRO_1,                                                                     QK_LLCK,        KC_HASH,        KC_LEFT_SHIFT,  KC_LEFT_GUI,    KC_LEFT_CTRL,   KC_LEFT_ALT,    KC_TRANSPARENT, 
     KC_AT,          KC_PIPE,        KC_EXLM,        KC_LBRC,        KC_RBRC,        KC_PLUS,                                        KC_ASTR,        KC_TILD,        KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_HYPR,        
     KC_HASH,        KC_TRANSPARENT, KC_TRANSPARENT, KC_LABK,        KC_RABK,        KC_TRANSPARENT,                                                                                                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT, KC_NO,          KC_NO,          
     KC_TRANSPARENT, KC_COLN,        KC_TRANSPARENT,                 KC_TRANSPARENT, KC_TRANSPARENT, KC_TRANSPARENT
@@ -197,6 +199,16 @@ bool rgb_matrix_indicators_user(void) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
   switch (keycode) {
+    case ST_MACRO_0:
+    if (record->event.pressed) {
+      SEND_STRING(SS_LSFT(SS_TAP(X_9))SS_DELAY(50)  SS_LSFT(SS_TAP(X_0))SS_DELAY(50)  SS_TAP(X_SPACE)SS_DELAY(50)  SS_TAP(X_EQUAL)SS_DELAY(50)  SS_LSFT(SS_TAP(X_DOT))SS_DELAY(50)  SS_TAP(X_SPACE));
+    }
+    break;
+    case ST_MACRO_1:
+    if (record->event.pressed) {
+      SEND_STRING(SS_TAP(X_EQUAL)SS_DELAY(50)  SS_LSFT(SS_TAP(X_DOT))SS_DELAY(50)  SS_TAP(X_SPACE));
+    }
+    break;
 
     case RGB_SLD:
         if (rawhid_state.rgb_control) {
